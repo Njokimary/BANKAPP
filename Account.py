@@ -21,15 +21,21 @@ class BankAccount:
 ##Savings account
 ##sub-class savings
 class savings_account(BankAccount):
-    pass
+    
+    def add_interest(self):
+        interest_amount = self.balance * 0.03
+        self.balance += interest_amount
+        return self.balance
 
 
-Njoki = BankAccount(11111,"njoki mary",0)
-Njoki.deposit(10000)
-Bin = BankAccount(22222,"Bin Amin",12000)
-print(Njoki.balance)
-print(Bin.balance)
-Bin.deposit(20000000)
+# Njoki = BankAccount(11111,"njoki mary",0)
+# Njoki.deposit(10000)
+# Bin = BankAccount(22222,"Bin Amin",12000)
+# print(Njoki.balance)
+# print(Bin.balance)
+# Bin.deposit(20000000)
 # print(Bin.balance)
 # print(Njoki.check_balance())
-Njoki.withdraw(5000)
+# Njoki.withdraw(5000)
+Njoki = savings_account(11111,"njoki mary",70000)
+print(Njoki.add_interest())
