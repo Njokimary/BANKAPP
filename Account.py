@@ -1,41 +1,55 @@
-class BankAccount:
-    def __init__(self, acc_number, acc_name, initial_balance):
+    # CLASS
+    # INSTANCE
+    # Class attributes & methods
+    # instance attributes & methods
+    # inheritance
+    # decorator
+
+# instance method - deposit  that takes amount
+# self.initial balance
+
+# Savings account
+# subClass => SavingsAccount
+
+
+
+class Bank_accounts:
+    total_balance = 0
+
+    def __init__(self,acc_number,acc_name,balance):
         self.acc_number = acc_number
         self.acc_name = acc_name
-        self.balance = initial_balance
+        self.balance = balance
+        Bank_accounts.total_balance += self.balance
+    
+    @classmethod
+    def total_bank_balance(cls):
+            print(cls.total_balance)
 
-    def deposit(self,amount):
+    def deposit(self, amount):
         self.balance += amount
+        Bank_accounts.total_balance += amount
+
 
     def check_balance(self):
-        print(f"Hello {self.acc_name},Your Balance is {self.balance}")
+        print(f'Hello {self.acc_name}, Your current balance is {self.balance}')
 
     def withdraw(self,amount):
-        if 0 < amount <= self.balance:
-            self.balance -=amount
-            print(f"hello {self.acc_name} Withdrew ${amount}. New balance: ${self.balance}")
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            print(f'Hello {self.acc_name},You have successfully withdrawn Ksh {amount}. Your current balance is {self.balance}')
         else:
-            print("Insufficient funds or invalid withdrawal amount.")
-
-##As a bank customer, I want to be able to create a savings account with my account number, account holder name, and initial balance.
-##Savings account
-##sub-class savings
-class savings_account(BankAccount):
-    
-    def add_interest(self):
-        interest_amount = self.balance * 0.03
-        self.balance += interest_amount
-        return self.balance
+            print("Insufficient balance")
 
 
-# Njoki = BankAccount(11111,"njoki mary",0)
-# Njoki.deposit(10000)
-# Bin = BankAccount(22222,"Bin Amin",12000)
-# print(Njoki.balance)
-# print(Bin.balance)
-# Bin.deposit(20000000)
-# print(Bin.balance)
-# print(Njoki.check_balance())
-# Njoki.withdraw(5000)
-Njoki = savings_account(11111,"njoki mary",70000)
-print(Njoki.add_interest())
+class Savings_account(Bank_accounts):
+        
+        def add_interest(self):
+            self.balance *= 1.03
+
+
+Bin = Bank_accounts(122334422,"Bin Amin",0)
+Dan = Bank_accounts("122223334423","Danwycliff",5000)
+Bin.deposit(60000)
+
+print(Bank_accounts.total_bank_balance())
