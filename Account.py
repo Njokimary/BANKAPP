@@ -17,6 +17,12 @@ class BankAccount:
         else:
             print("Insufficient funds or invalid withdrawal amount.")
 
+##As a bank customer, I want to be able to create a savings account with my account number, account holder name, and initial balance.
+##Savings account
+##sub-class savings
+class savings_account(BankAccount):
+    pass
+
 
 Njoki = BankAccount(11111,"njoki mary",0)
 Njoki.deposit(10000)
